@@ -1,0 +1,17 @@
+'use strict';
+var $49d523bc7ff8596b8307ddf2f9b21aa6$var$hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
+import   "49d523bc7ff8596b8307ddf2f9b21aa6:call-bind/callBound";
+var $49d523bc7ff8596b8307ddf2f9b21aa6$var$$toString = $49d523bc7ff8596b8307ddf2f9b21aa6$import$e19d4093e38a9e0('Object.prototype.toString');
+var $49d523bc7ff8596b8307ddf2f9b21aa6$var$isStandardArguments = function isArguments(value) {
+    if ($49d523bc7ff8596b8307ddf2f9b21aa6$var$hasToStringTag && value && typeof value === 'object' && Symbol.toStringTag in value) return false;
+    return $49d523bc7ff8596b8307ddf2f9b21aa6$var$$toString(value) === '[object Arguments]';
+};
+var $49d523bc7ff8596b8307ddf2f9b21aa6$var$isLegacyArguments = function isArguments1(value) {
+    if ($49d523bc7ff8596b8307ddf2f9b21aa6$var$isStandardArguments(value)) return true;
+    return value !== null && typeof value === 'object' && typeof value.length === 'number' && value.length >= 0 && $49d523bc7ff8596b8307ddf2f9b21aa6$var$$toString(value) !== '[object Array]' && $49d523bc7ff8596b8307ddf2f9b21aa6$var$$toString(value.callee) === '[object Function]';
+};
+var $49d523bc7ff8596b8307ddf2f9b21aa6$var$supportsStandardArguments = function() {
+    return $49d523bc7ff8596b8307ddf2f9b21aa6$var$isStandardArguments(arguments);
+}();
+$49d523bc7ff8596b8307ddf2f9b21aa6$var$isStandardArguments.isLegacyArguments = $49d523bc7ff8596b8307ddf2f9b21aa6$var$isLegacyArguments; // for tests
+$49d523bc7ff8596b8307ddf2f9b21aa6$exports = $49d523bc7ff8596b8307ddf2f9b21aa6$var$supportsStandardArguments ? $49d523bc7ff8596b8307ddf2f9b21aa6$var$isStandardArguments : $49d523bc7ff8596b8307ddf2f9b21aa6$var$isLegacyArguments;

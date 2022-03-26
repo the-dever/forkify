@@ -1,0 +1,9 @@
+'use strict';
+import   "08661983e8f1c7def522bb16dbe69a91:get-intrinsic";
+import   "08661983e8f1c7def522bb16dbe69a91:./";
+var $08661983e8f1c7def522bb16dbe69a91$var$$indexOf = $08661983e8f1c7def522bb16dbe69a91$import$d730154e000fc5af($08661983e8f1c7def522bb16dbe69a91$import$c9222b71efe3969d('String.prototype.indexOf'));
+$08661983e8f1c7def522bb16dbe69a91$exports = function callBoundIntrinsic(name, allowMissing) {
+    var intrinsic = $08661983e8f1c7def522bb16dbe69a91$import$c9222b71efe3969d(name, !!allowMissing);
+    if (typeof intrinsic === 'function' && $08661983e8f1c7def522bb16dbe69a91$var$$indexOf(name, '.prototype.') > -1) return $08661983e8f1c7def522bb16dbe69a91$import$d730154e000fc5af(intrinsic);
+    return intrinsic;
+};

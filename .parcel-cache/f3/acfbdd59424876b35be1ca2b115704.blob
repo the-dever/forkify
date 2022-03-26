@@ -1,0 +1,14 @@
+'use strict';
+import   "f845094a49b689a68e968720f0f0135b:define-properties";
+import   "f845094a49b689a68e968720f0f0135b:./polyfill";
+/* http://www.ecma-international.org/ecma-262/6.0/#sec-number.isnan */ $f845094a49b689a68e968720f0f0135b$exports = function shimNumberIsNaN() {
+    var polyfill = $f845094a49b689a68e968720f0f0135b$import$845c26d6debe782f();
+    $f845094a49b689a68e968720f0f0135b$import$19306aeffbeaaf25(Number, {
+        isNaN: polyfill
+    }, {
+        isNaN: function testIsNaN() {
+            return Number.isNaN !== polyfill;
+        }
+    });
+    return polyfill;
+};

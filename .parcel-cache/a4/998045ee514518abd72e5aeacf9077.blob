@@ -1,0 +1,44 @@
+'use strict';
+import   "c35fe3581226801a16491cf0e90c6a74:foreach";
+import   "c35fe3581226801a16491cf0e90c6a74:available-typed-arrays";
+import   "c35fe3581226801a16491cf0e90c6a74:call-bind/callBound";
+var $c35fe3581226801a16491cf0e90c6a74$var$$toString = $c35fe3581226801a16491cf0e90c6a74$import$e19d4093e38a9e0('Object.prototype.toString');
+import   "c35fe3581226801a16491cf0e90c6a74:has-symbols";
+var $c35fe3581226801a16491cf0e90c6a74$var$hasSymbols = $c35fe3581226801a16491cf0e90c6a74$import$6ef88b142bdc3e2a();
+var $c35fe3581226801a16491cf0e90c6a74$var$hasToStringTag = $c35fe3581226801a16491cf0e90c6a74$var$hasSymbols && typeof Symbol.toStringTag === 'symbol';
+var $c35fe3581226801a16491cf0e90c6a74$var$typedArrays = $c35fe3581226801a16491cf0e90c6a74$import$12deba2bda2b2082();
+var $c35fe3581226801a16491cf0e90c6a74$var$$slice = $c35fe3581226801a16491cf0e90c6a74$import$e19d4093e38a9e0('String.prototype.slice');
+var $c35fe3581226801a16491cf0e90c6a74$var$toStrTags = {
+};
+import   "c35fe3581226801a16491cf0e90c6a74:es-abstract/helpers/getOwnPropertyDescriptor";
+var $c35fe3581226801a16491cf0e90c6a74$var$getPrototypeOf = Object.getPrototypeOf; // require('getprototypeof');
+if ($c35fe3581226801a16491cf0e90c6a74$var$hasToStringTag && $c35fe3581226801a16491cf0e90c6a74$import$8446c5815cd2b380 && $c35fe3581226801a16491cf0e90c6a74$var$getPrototypeOf) $c35fe3581226801a16491cf0e90c6a74$import$b82001361ca2da62($c35fe3581226801a16491cf0e90c6a74$var$typedArrays, function(typedArray) {
+    if (typeof $parcel$global[typedArray] === 'function') {
+        var arr = new $parcel$global[typedArray]();
+        if (!(Symbol.toStringTag in arr)) throw new EvalError('this engine has support for Symbol.toStringTag, but ' + typedArray + ' does not have the property! Please report this.');
+        var proto = $c35fe3581226801a16491cf0e90c6a74$var$getPrototypeOf(arr);
+        var descriptor = $c35fe3581226801a16491cf0e90c6a74$import$8446c5815cd2b380(proto, Symbol.toStringTag);
+        if (!descriptor) {
+            var superProto = $c35fe3581226801a16491cf0e90c6a74$var$getPrototypeOf(proto);
+            descriptor = $c35fe3581226801a16491cf0e90c6a74$import$8446c5815cd2b380(superProto, Symbol.toStringTag);
+        }
+        $c35fe3581226801a16491cf0e90c6a74$var$toStrTags[typedArray] = descriptor.get;
+    }
+});
+var $c35fe3581226801a16491cf0e90c6a74$var$tryTypedArrays = function tryAllTypedArrays(value) {
+    var foundName = false;
+    $c35fe3581226801a16491cf0e90c6a74$import$b82001361ca2da62($c35fe3581226801a16491cf0e90c6a74$var$toStrTags, function(getter, typedArray) {
+        if (!foundName) try {
+            var name = getter.call(value);
+            if (name === typedArray) foundName = name;
+        } catch (e) {
+        }
+    });
+    return foundName;
+};
+import   "c35fe3581226801a16491cf0e90c6a74:is-typed-array";
+$c35fe3581226801a16491cf0e90c6a74$exports = function whichTypedArray(value) {
+    if (!$c35fe3581226801a16491cf0e90c6a74$import$f825e3823b931a39(value)) return false;
+    if (!$c35fe3581226801a16491cf0e90c6a74$var$hasToStringTag) return $c35fe3581226801a16491cf0e90c6a74$var$$slice($c35fe3581226801a16491cf0e90c6a74$var$$toString(value), 8, -1);
+    return $c35fe3581226801a16491cf0e90c6a74$var$tryTypedArrays(value);
+};

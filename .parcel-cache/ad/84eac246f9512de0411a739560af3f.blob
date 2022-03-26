@@ -1,0 +1,171 @@
+import   "8993b23819333590b33f7f0bbd0c7617:buffer";
+var $8993b23819333590b33f7f0bbd0c7617$require$Buffer = $8993b23819333590b33f7f0bbd0c7617$import$14e1765886db335a$74954538e33d2f49;
+import   "8993b23819333590b33f7f0bbd0c7617:assert";
+import   "8993b23819333590b33f7f0bbd0c7617:stream";
+var $8993b23819333590b33f7f0bbd0c7617$require$Stream = $8993b23819333590b33f7f0bbd0c7617$import$bbd6d520a8fdb4cc$e79343fbfb1d891c;
+import   "8993b23819333590b33f7f0bbd0c7617:util";
+///--- Globals
+/* JSSTYLED */ var $8993b23819333590b33f7f0bbd0c7617$var$UUID_REGEXP = /^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$/;
+///--- Internal
+function $8993b23819333590b33f7f0bbd0c7617$var$_capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+function $8993b23819333590b33f7f0bbd0c7617$var$_toss(name, expected, oper, arg, actual) {
+    throw new $8993b23819333590b33f7f0bbd0c7617$import$b8795f4f643ce74f.AssertionError({
+        message: $8993b23819333590b33f7f0bbd0c7617$import$321a875a76c72525$a5b158389611e45d('%s (%s) is required', name, expected),
+        actual: actual === undefined ? typeof arg : actual(arg),
+        expected: expected,
+        operator: oper || '===',
+        stackStartFunction: $8993b23819333590b33f7f0bbd0c7617$var$_toss.caller
+    });
+}
+function $8993b23819333590b33f7f0bbd0c7617$var$_getClass(arg) {
+    return Object.prototype.toString.call(arg).slice(8, -1);
+}
+function $8993b23819333590b33f7f0bbd0c7617$var$noop() {
+// Why even bother with asserts?
+}
+///--- Exports
+var $8993b23819333590b33f7f0bbd0c7617$var$types = {
+    bool: {
+        check: function(arg) {
+            return typeof arg === 'boolean';
+        }
+    },
+    func: {
+        check: function(arg) {
+            return typeof arg === 'function';
+        }
+    },
+    string: {
+        check: function(arg) {
+            return typeof arg === 'string';
+        }
+    },
+    object: {
+        check: function(arg) {
+            return typeof arg === 'object' && arg !== null;
+        }
+    },
+    number: {
+        check: function(arg) {
+            return typeof arg === 'number' && !isNaN(arg);
+        }
+    },
+    finite: {
+        check: function(arg) {
+            return typeof arg === 'number' && !isNaN(arg) && isFinite(arg);
+        }
+    },
+    buffer: {
+        check: function(arg) {
+            return $8993b23819333590b33f7f0bbd0c7617$require$Buffer.isBuffer(arg);
+        },
+        operator: 'Buffer.isBuffer'
+    },
+    array: {
+        check: function(arg) {
+            return Array.isArray(arg);
+        },
+        operator: 'Array.isArray'
+    },
+    stream: {
+        check: function(arg) {
+            return arg instanceof $8993b23819333590b33f7f0bbd0c7617$require$Stream;
+        },
+        operator: 'instanceof',
+        actual: $8993b23819333590b33f7f0bbd0c7617$var$_getClass
+    },
+    date: {
+        check: function(arg) {
+            return arg instanceof Date;
+        },
+        operator: 'instanceof',
+        actual: $8993b23819333590b33f7f0bbd0c7617$var$_getClass
+    },
+    regexp: {
+        check: function(arg) {
+            return arg instanceof RegExp;
+        },
+        operator: 'instanceof',
+        actual: $8993b23819333590b33f7f0bbd0c7617$var$_getClass
+    },
+    uuid: {
+        check: function(arg) {
+            return typeof arg === 'string' && $8993b23819333590b33f7f0bbd0c7617$var$UUID_REGEXP.test(arg);
+        },
+        operator: 'isUUID'
+    }
+};
+function $8993b23819333590b33f7f0bbd0c7617$var$_setExports(ndebug) {
+    var keys = Object.keys($8993b23819333590b33f7f0bbd0c7617$var$types);
+    var out;
+    out = function(arg, msg) {
+        if (!arg) $8993b23819333590b33f7f0bbd0c7617$var$_toss(msg, 'true', arg);
+    };
+    /* standard checks */ keys.forEach(function(k) {
+        if (ndebug) {
+            out[k] = $8993b23819333590b33f7f0bbd0c7617$var$noop;
+            return;
+        }
+        var type = $8993b23819333590b33f7f0bbd0c7617$var$types[k];
+        out[k] = function(arg, msg) {
+            if (!type.check(arg)) $8993b23819333590b33f7f0bbd0c7617$var$_toss(msg, k, type.operator, arg, type.actual);
+        };
+    });
+    /* optional checks */ keys.forEach(function(k) {
+        var name = 'optional' + $8993b23819333590b33f7f0bbd0c7617$var$_capitalize(k);
+        if (ndebug) {
+            out[name] = $8993b23819333590b33f7f0bbd0c7617$var$noop;
+            return;
+        }
+        var type = $8993b23819333590b33f7f0bbd0c7617$var$types[k];
+        out[name] = function(arg, msg) {
+            if (arg === undefined || arg === null) return;
+            if (!type.check(arg)) $8993b23819333590b33f7f0bbd0c7617$var$_toss(msg, k, type.operator, arg, type.actual);
+        };
+    });
+    /* arrayOf checks */ keys.forEach(function(k) {
+        var name = 'arrayOf' + $8993b23819333590b33f7f0bbd0c7617$var$_capitalize(k);
+        if (ndebug) {
+            out[name] = $8993b23819333590b33f7f0bbd0c7617$var$noop;
+            return;
+        }
+        var type = $8993b23819333590b33f7f0bbd0c7617$var$types[k];
+        var expected = '[' + k + ']';
+        out[name] = function(arg, msg) {
+            if (!Array.isArray(arg)) $8993b23819333590b33f7f0bbd0c7617$var$_toss(msg, expected, type.operator, arg, type.actual);
+            var i;
+            for(i = 0; i < arg.length; i++)if (!type.check(arg[i])) $8993b23819333590b33f7f0bbd0c7617$var$_toss(msg, expected, type.operator, arg, type.actual);
+        };
+    });
+    /* optionalArrayOf checks */ keys.forEach(function(k) {
+        var name = 'optionalArrayOf' + $8993b23819333590b33f7f0bbd0c7617$var$_capitalize(k);
+        if (ndebug) {
+            out[name] = $8993b23819333590b33f7f0bbd0c7617$var$noop;
+            return;
+        }
+        var type = $8993b23819333590b33f7f0bbd0c7617$var$types[k];
+        var expected = '[' + k + ']';
+        out[name] = function(arg, msg) {
+            if (arg === undefined || arg === null) return;
+            if (!Array.isArray(arg)) $8993b23819333590b33f7f0bbd0c7617$var$_toss(msg, expected, type.operator, arg, type.actual);
+            var i;
+            for(i = 0; i < arg.length; i++)if (!type.check(arg[i])) $8993b23819333590b33f7f0bbd0c7617$var$_toss(msg, expected, type.operator, arg, type.actual);
+        };
+    });
+    /* re-export built-in assertions */ Object.keys($8993b23819333590b33f7f0bbd0c7617$import$b8795f4f643ce74f).forEach(function(k) {
+        if (k === 'AssertionError') {
+            out[k] = $8993b23819333590b33f7f0bbd0c7617$import$b8795f4f643ce74f[k];
+            return;
+        }
+        if (ndebug) {
+            out[k] = $8993b23819333590b33f7f0bbd0c7617$var$noop;
+            return;
+        }
+        out[k] = $8993b23819333590b33f7f0bbd0c7617$import$b8795f4f643ce74f[k];
+    });
+    /* export ourselves (for unit tests _only_) */ out._setExports = $8993b23819333590b33f7f0bbd0c7617$var$_setExports;
+    return out;
+}
+$8993b23819333590b33f7f0bbd0c7617$exports = $8993b23819333590b33f7f0bbd0c7617$var$_setExports(undefined);

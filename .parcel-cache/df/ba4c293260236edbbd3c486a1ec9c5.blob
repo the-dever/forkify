@@ -1,0 +1,6 @@
+'use strict';
+import   "699e7e8a3a444cf6db8f642e03178990:./implementation";
+$699e7e8a3a444cf6db8f642e03178990$exports = function getPolyfill() {
+    if (Number.isNaN && Number.isNaN(NaN) && !Number.isNaN('a')) return Number.isNaN;
+    return $699e7e8a3a444cf6db8f642e03178990$import$88e6b8e95b0eaa25;
+};

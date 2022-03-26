@@ -1,0 +1,10 @@
+'use strict';
+var $d279b66616085e55c5767bf9cfbfcc49$var$origSymbol = typeof Symbol !== 'undefined' && Symbol;
+import   "d279b66616085e55c5767bf9cfbfcc49:./shams";
+$d279b66616085e55c5767bf9cfbfcc49$exports = function hasNativeSymbols() {
+    if (typeof $d279b66616085e55c5767bf9cfbfcc49$var$origSymbol !== 'function') return false;
+    if (typeof Symbol !== 'function') return false;
+    if (typeof $d279b66616085e55c5767bf9cfbfcc49$var$origSymbol('foo') !== 'symbol') return false;
+    if (typeof Symbol('bar') !== 'symbol') return false;
+    return $d279b66616085e55c5767bf9cfbfcc49$import$b2883490fc0d3a6();
+};

@@ -1,0 +1,36 @@
+'use strict';
+import   "7847ef024df25e0e63ef55d6dc9c9f18:function-bind";
+import   "7847ef024df25e0e63ef55d6dc9c9f18:get-intrinsic";
+var $7847ef024df25e0e63ef55d6dc9c9f18$var$$apply = $7847ef024df25e0e63ef55d6dc9c9f18$import$c9222b71efe3969d('%Function.prototype.apply%');
+var $7847ef024df25e0e63ef55d6dc9c9f18$var$$call = $7847ef024df25e0e63ef55d6dc9c9f18$import$c9222b71efe3969d('%Function.prototype.call%');
+var $7847ef024df25e0e63ef55d6dc9c9f18$var$$reflectApply = $7847ef024df25e0e63ef55d6dc9c9f18$import$c9222b71efe3969d('%Reflect.apply%', true) || $7847ef024df25e0e63ef55d6dc9c9f18$import$cd14fe852de5d838.call($7847ef024df25e0e63ef55d6dc9c9f18$var$$call, $7847ef024df25e0e63ef55d6dc9c9f18$var$$apply);
+var $7847ef024df25e0e63ef55d6dc9c9f18$var$$gOPD = $7847ef024df25e0e63ef55d6dc9c9f18$import$c9222b71efe3969d('%Object.getOwnPropertyDescriptor%', true);
+var $7847ef024df25e0e63ef55d6dc9c9f18$var$$defineProperty = $7847ef024df25e0e63ef55d6dc9c9f18$import$c9222b71efe3969d('%Object.defineProperty%', true);
+var $7847ef024df25e0e63ef55d6dc9c9f18$var$$max = $7847ef024df25e0e63ef55d6dc9c9f18$import$c9222b71efe3969d('%Math.max%');
+if ($7847ef024df25e0e63ef55d6dc9c9f18$var$$defineProperty) try {
+    $7847ef024df25e0e63ef55d6dc9c9f18$var$$defineProperty({
+    }, 'a', {
+        value: 1
+    });
+} catch (e) {
+    // IE 8 has a broken defineProperty
+    $7847ef024df25e0e63ef55d6dc9c9f18$var$$defineProperty = null;
+}
+$7847ef024df25e0e63ef55d6dc9c9f18$exports = function callBind(originalFunction) {
+    var func = $7847ef024df25e0e63ef55d6dc9c9f18$var$$reflectApply($7847ef024df25e0e63ef55d6dc9c9f18$import$cd14fe852de5d838, $7847ef024df25e0e63ef55d6dc9c9f18$var$$call, arguments);
+    if ($7847ef024df25e0e63ef55d6dc9c9f18$var$$gOPD && $7847ef024df25e0e63ef55d6dc9c9f18$var$$defineProperty) {
+        var desc = $7847ef024df25e0e63ef55d6dc9c9f18$var$$gOPD(func, 'length');
+        if (desc.configurable) // original length, plus the receiver, minus any additional arguments (after the receiver)
+        $7847ef024df25e0e63ef55d6dc9c9f18$var$$defineProperty(func, 'length', {
+            value: 1 + $7847ef024df25e0e63ef55d6dc9c9f18$var$$max(0, originalFunction.length - (arguments.length - 1))
+        });
+    }
+    return func;
+};
+var $7847ef024df25e0e63ef55d6dc9c9f18$var$applyBind = function applyBind() {
+    return $7847ef024df25e0e63ef55d6dc9c9f18$var$$reflectApply($7847ef024df25e0e63ef55d6dc9c9f18$import$cd14fe852de5d838, $7847ef024df25e0e63ef55d6dc9c9f18$var$$apply, arguments);
+};
+if ($7847ef024df25e0e63ef55d6dc9c9f18$var$$defineProperty) $7847ef024df25e0e63ef55d6dc9c9f18$var$$defineProperty($7847ef024df25e0e63ef55d6dc9c9f18$exports, 'apply', {
+    value: $7847ef024df25e0e63ef55d6dc9c9f18$var$applyBind
+});
+else $7847ef024df25e0e63ef55d6dc9c9f18$exports.apply = $7847ef024df25e0e63ef55d6dc9c9f18$var$applyBind;

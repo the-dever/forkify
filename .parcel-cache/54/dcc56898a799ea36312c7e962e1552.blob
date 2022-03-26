@@ -1,0 +1,8 @@
+'use strict';
+var $1f4659def3cb1438d1655dcbe7634249$var$toStr = Object.prototype.toString;
+$1f4659def3cb1438d1655dcbe7634249$exports = function isArguments(value) {
+    var str = $1f4659def3cb1438d1655dcbe7634249$var$toStr.call(value);
+    var isArgs = str === '[object Arguments]';
+    if (!isArgs) isArgs = str !== '[object Array]' && value !== null && typeof value === 'object' && typeof value.length === 'number' && value.length >= 0 && $1f4659def3cb1438d1655dcbe7634249$var$toStr.call(value.callee) === '[object Function]';
+    return isArgs;
+};

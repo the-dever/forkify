@@ -1,0 +1,4 @@
+'use strict';
+/* http://www.ecma-international.org/ecma-262/6.0/#sec-number.isnan */ $bbe81d3fe123c92603ee2bc592e778a5$exports = function isNaN(value) {
+    return value !== value;
+};

@@ -1,0 +1,44 @@
+'use strict';
+import   "f704d0170d2b88d8f0ea27d30ab28993:object-keys";
+var $f704d0170d2b88d8f0ea27d30ab28993$var$hasSymbols = typeof Symbol === 'function' && typeof Symbol('foo') === 'symbol';
+var $f704d0170d2b88d8f0ea27d30ab28993$var$toStr = Object.prototype.toString;
+var $f704d0170d2b88d8f0ea27d30ab28993$var$concat = Array.prototype.concat;
+var $f704d0170d2b88d8f0ea27d30ab28993$var$origDefineProperty = Object.defineProperty;
+var $f704d0170d2b88d8f0ea27d30ab28993$var$isFunction = function(fn) {
+    return typeof fn === 'function' && $f704d0170d2b88d8f0ea27d30ab28993$var$toStr.call(fn) === '[object Function]';
+};
+var $f704d0170d2b88d8f0ea27d30ab28993$var$arePropertyDescriptorsSupported = function() {
+    var obj = {
+    };
+    try {
+        $f704d0170d2b88d8f0ea27d30ab28993$var$origDefineProperty(obj, 'x', {
+            enumerable: false,
+            value: obj
+        });
+        // eslint-disable-next-line no-unused-vars, no-restricted-syntax
+        for(var _ in obj)return false;
+        return obj.x === obj;
+    } catch (e) {
+        return false;
+    }
+};
+var $f704d0170d2b88d8f0ea27d30ab28993$var$supportsDescriptors = $f704d0170d2b88d8f0ea27d30ab28993$var$origDefineProperty && $f704d0170d2b88d8f0ea27d30ab28993$var$arePropertyDescriptorsSupported();
+var $f704d0170d2b88d8f0ea27d30ab28993$var$defineProperty = function(object, name, value, predicate) {
+    if (name in object && (!$f704d0170d2b88d8f0ea27d30ab28993$var$isFunction(predicate) || !predicate())) return;
+    if ($f704d0170d2b88d8f0ea27d30ab28993$var$supportsDescriptors) $f704d0170d2b88d8f0ea27d30ab28993$var$origDefineProperty(object, name, {
+        configurable: true,
+        enumerable: false,
+        value: value,
+        writable: true
+    });
+    else object[name] = value;
+};
+var $f704d0170d2b88d8f0ea27d30ab28993$var$defineProperties = function(object, map) {
+    var predicates = arguments.length > 2 ? arguments[2] : {
+    };
+    var props = $f704d0170d2b88d8f0ea27d30ab28993$import$51249bcca140cd76(map);
+    if ($f704d0170d2b88d8f0ea27d30ab28993$var$hasSymbols) props = $f704d0170d2b88d8f0ea27d30ab28993$var$concat.call(props, Object.getOwnPropertySymbols(map));
+    for(var i = 0; i < props.length; i += 1)$f704d0170d2b88d8f0ea27d30ab28993$var$defineProperty(object, props[i], map[props[i]], predicates[props[i]]);
+};
+$f704d0170d2b88d8f0ea27d30ab28993$var$defineProperties.supportsDescriptors = !!$f704d0170d2b88d8f0ea27d30ab28993$var$supportsDescriptors;
+$f704d0170d2b88d8f0ea27d30ab28993$exports = $f704d0170d2b88d8f0ea27d30ab28993$var$defineProperties;

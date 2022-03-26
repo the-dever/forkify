@@ -1,0 +1,3 @@
+'use strict';
+import   "dedb9bdf2b401540138ec55dcfea8927:./implementation";
+$dedb9bdf2b401540138ec55dcfea8927$exports = Function.prototype.bind || $dedb9bdf2b401540138ec55dcfea8927$import$88e6b8e95b0eaa25;

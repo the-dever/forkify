@@ -1,0 +1,430 @@
+'use strict';
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined;
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$$SyntaxError = SyntaxError;
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$$Function = Function;
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$$TypeError = TypeError;
+// eslint-disable-next-line consistent-return
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$getEvalledConstructor = function(expressionSyntax) {
+    try {
+        return $b37750ce4082e8b1650c82b7b1bebfc3$var$$Function('"use strict"; return (' + expressionSyntax + ').constructor;')();
+    } catch (e) {
+    }
+};
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$$gOPD = Object.getOwnPropertyDescriptor;
+if ($b37750ce4082e8b1650c82b7b1bebfc3$var$$gOPD) try {
+    $b37750ce4082e8b1650c82b7b1bebfc3$var$$gOPD({
+    }, '');
+} catch (e) {
+    $b37750ce4082e8b1650c82b7b1bebfc3$var$$gOPD = null; // this is IE 8, which has a broken gOPD
+}
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$throwTypeError = function() {
+    throw new $b37750ce4082e8b1650c82b7b1bebfc3$var$$TypeError();
+};
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$ThrowTypeError = $b37750ce4082e8b1650c82b7b1bebfc3$var$$gOPD ? function() {
+    try {
+        // eslint-disable-next-line no-unused-expressions, no-caller, no-restricted-properties
+        arguments.callee; // IE 8 does not throw here
+        return $b37750ce4082e8b1650c82b7b1bebfc3$var$throwTypeError;
+    } catch (calleeThrows) {
+        try {
+            // IE 8 throws on Object.getOwnPropertyDescriptor(arguments, '')
+            return $b37750ce4082e8b1650c82b7b1bebfc3$var$$gOPD(arguments, 'callee').get;
+        } catch (gOPDthrows) {
+            return $b37750ce4082e8b1650c82b7b1bebfc3$var$throwTypeError;
+        }
+    }
+}() : $b37750ce4082e8b1650c82b7b1bebfc3$var$throwTypeError;
+import   "b37750ce4082e8b1650c82b7b1bebfc3:has-symbols";
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$hasSymbols = $b37750ce4082e8b1650c82b7b1bebfc3$import$6ef88b142bdc3e2a();
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$getProto = Object.getPrototypeOf || function(x) {
+    return x.__proto__;
+}; // eslint-disable-line no-proto
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$needsEval = {
+};
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$TypedArray = typeof Uint8Array === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : $b37750ce4082e8b1650c82b7b1bebfc3$var$getProto(Uint8Array);
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$INTRINSICS = {
+    '%AggregateError%': typeof AggregateError === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : AggregateError,
+    '%Array%': Array,
+    '%ArrayBuffer%': typeof ArrayBuffer === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : ArrayBuffer,
+    '%ArrayIteratorPrototype%': $b37750ce4082e8b1650c82b7b1bebfc3$var$hasSymbols ? $b37750ce4082e8b1650c82b7b1bebfc3$var$getProto([][Symbol.iterator]()) : $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined,
+    '%AsyncFromSyncIteratorPrototype%': $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined,
+    '%AsyncFunction%': $b37750ce4082e8b1650c82b7b1bebfc3$var$needsEval,
+    '%AsyncGenerator%': $b37750ce4082e8b1650c82b7b1bebfc3$var$needsEval,
+    '%AsyncGeneratorFunction%': $b37750ce4082e8b1650c82b7b1bebfc3$var$needsEval,
+    '%AsyncIteratorPrototype%': $b37750ce4082e8b1650c82b7b1bebfc3$var$needsEval,
+    '%Atomics%': typeof Atomics === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : Atomics,
+    '%BigInt%': typeof BigInt === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : BigInt,
+    '%Boolean%': Boolean,
+    '%DataView%': typeof DataView === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : DataView,
+    '%Date%': Date,
+    '%decodeURI%': decodeURI,
+    '%decodeURIComponent%': decodeURIComponent,
+    '%encodeURI%': encodeURI,
+    '%encodeURIComponent%': encodeURIComponent,
+    '%Error%': Error,
+    '%eval%': eval,
+    '%EvalError%': EvalError,
+    '%Float32Array%': typeof Float32Array === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : Float32Array,
+    '%Float64Array%': typeof Float64Array === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : Float64Array,
+    '%FinalizationRegistry%': typeof FinalizationRegistry === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : FinalizationRegistry,
+    '%Function%': $b37750ce4082e8b1650c82b7b1bebfc3$var$$Function,
+    '%GeneratorFunction%': $b37750ce4082e8b1650c82b7b1bebfc3$var$needsEval,
+    '%Int8Array%': typeof Int8Array === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : Int8Array,
+    '%Int16Array%': typeof Int16Array === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : Int16Array,
+    '%Int32Array%': typeof Int32Array === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : Int32Array,
+    '%isFinite%': isFinite,
+    '%isNaN%': isNaN,
+    '%IteratorPrototype%': $b37750ce4082e8b1650c82b7b1bebfc3$var$hasSymbols ? $b37750ce4082e8b1650c82b7b1bebfc3$var$getProto($b37750ce4082e8b1650c82b7b1bebfc3$var$getProto([][Symbol.iterator]())) : $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined,
+    '%JSON%': typeof JSON === 'object' ? JSON : $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined,
+    '%Map%': typeof Map === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : Map,
+    '%MapIteratorPrototype%': typeof Map === 'undefined' || !$b37750ce4082e8b1650c82b7b1bebfc3$var$hasSymbols ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : $b37750ce4082e8b1650c82b7b1bebfc3$var$getProto(new Map()[Symbol.iterator]()),
+    '%Math%': Math,
+    '%Number%': Number,
+    '%Object%': Object,
+    '%parseFloat%': parseFloat,
+    '%parseInt%': parseInt,
+    '%Promise%': typeof Promise === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : Promise,
+    '%Proxy%': typeof Proxy === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : Proxy,
+    '%RangeError%': RangeError,
+    '%ReferenceError%': ReferenceError,
+    '%Reflect%': typeof Reflect === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : Reflect,
+    '%RegExp%': RegExp,
+    '%Set%': typeof Set === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : Set,
+    '%SetIteratorPrototype%': typeof Set === 'undefined' || !$b37750ce4082e8b1650c82b7b1bebfc3$var$hasSymbols ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : $b37750ce4082e8b1650c82b7b1bebfc3$var$getProto(new Set()[Symbol.iterator]()),
+    '%SharedArrayBuffer%': typeof SharedArrayBuffer === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : SharedArrayBuffer,
+    '%String%': String,
+    '%StringIteratorPrototype%': $b37750ce4082e8b1650c82b7b1bebfc3$var$hasSymbols ? $b37750ce4082e8b1650c82b7b1bebfc3$var$getProto(''[Symbol.iterator]()) : $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined,
+    '%Symbol%': $b37750ce4082e8b1650c82b7b1bebfc3$var$hasSymbols ? Symbol : $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined,
+    '%SyntaxError%': $b37750ce4082e8b1650c82b7b1bebfc3$var$$SyntaxError,
+    '%ThrowTypeError%': $b37750ce4082e8b1650c82b7b1bebfc3$var$ThrowTypeError,
+    '%TypedArray%': $b37750ce4082e8b1650c82b7b1bebfc3$var$TypedArray,
+    '%TypeError%': $b37750ce4082e8b1650c82b7b1bebfc3$var$$TypeError,
+    '%Uint8Array%': typeof Uint8Array === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : Uint8Array,
+    '%Uint8ClampedArray%': typeof Uint8ClampedArray === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : Uint8ClampedArray,
+    '%Uint16Array%': typeof Uint16Array === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : Uint16Array,
+    '%Uint32Array%': typeof Uint32Array === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : Uint32Array,
+    '%URIError%': URIError,
+    '%WeakMap%': typeof WeakMap === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : WeakMap,
+    '%WeakRef%': typeof WeakRef === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : WeakRef,
+    '%WeakSet%': typeof WeakSet === 'undefined' ? $b37750ce4082e8b1650c82b7b1bebfc3$var$undefined : WeakSet
+};
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$doEval = function doEval(name) {
+    var value;
+    if (name === '%AsyncFunction%') value = $b37750ce4082e8b1650c82b7b1bebfc3$var$getEvalledConstructor('async function () {}');
+    else if (name === '%GeneratorFunction%') value = $b37750ce4082e8b1650c82b7b1bebfc3$var$getEvalledConstructor('function* () {}');
+    else if (name === '%AsyncGeneratorFunction%') value = $b37750ce4082e8b1650c82b7b1bebfc3$var$getEvalledConstructor('async function* () {}');
+    else if (name === '%AsyncGenerator%') {
+        var fn = doEval('%AsyncGeneratorFunction%');
+        if (fn) value = fn.prototype;
+    } else if (name === '%AsyncIteratorPrototype%') {
+        var gen = doEval('%AsyncGenerator%');
+        if (gen) value = $b37750ce4082e8b1650c82b7b1bebfc3$var$getProto(gen.prototype);
+    }
+    $b37750ce4082e8b1650c82b7b1bebfc3$var$INTRINSICS[name] = value;
+    return value;
+};
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$LEGACY_ALIASES = {
+    '%ArrayBufferPrototype%': [
+        'ArrayBuffer',
+        'prototype'
+    ],
+    '%ArrayPrototype%': [
+        'Array',
+        'prototype'
+    ],
+    '%ArrayProto_entries%': [
+        'Array',
+        'prototype',
+        'entries'
+    ],
+    '%ArrayProto_forEach%': [
+        'Array',
+        'prototype',
+        'forEach'
+    ],
+    '%ArrayProto_keys%': [
+        'Array',
+        'prototype',
+        'keys'
+    ],
+    '%ArrayProto_values%': [
+        'Array',
+        'prototype',
+        'values'
+    ],
+    '%AsyncFunctionPrototype%': [
+        'AsyncFunction',
+        'prototype'
+    ],
+    '%AsyncGenerator%': [
+        'AsyncGeneratorFunction',
+        'prototype'
+    ],
+    '%AsyncGeneratorPrototype%': [
+        'AsyncGeneratorFunction',
+        'prototype',
+        'prototype'
+    ],
+    '%BooleanPrototype%': [
+        'Boolean',
+        'prototype'
+    ],
+    '%DataViewPrototype%': [
+        'DataView',
+        'prototype'
+    ],
+    '%DatePrototype%': [
+        'Date',
+        'prototype'
+    ],
+    '%ErrorPrototype%': [
+        'Error',
+        'prototype'
+    ],
+    '%EvalErrorPrototype%': [
+        'EvalError',
+        'prototype'
+    ],
+    '%Float32ArrayPrototype%': [
+        'Float32Array',
+        'prototype'
+    ],
+    '%Float64ArrayPrototype%': [
+        'Float64Array',
+        'prototype'
+    ],
+    '%FunctionPrototype%': [
+        'Function',
+        'prototype'
+    ],
+    '%Generator%': [
+        'GeneratorFunction',
+        'prototype'
+    ],
+    '%GeneratorPrototype%': [
+        'GeneratorFunction',
+        'prototype',
+        'prototype'
+    ],
+    '%Int8ArrayPrototype%': [
+        'Int8Array',
+        'prototype'
+    ],
+    '%Int16ArrayPrototype%': [
+        'Int16Array',
+        'prototype'
+    ],
+    '%Int32ArrayPrototype%': [
+        'Int32Array',
+        'prototype'
+    ],
+    '%JSONParse%': [
+        'JSON',
+        'parse'
+    ],
+    '%JSONStringify%': [
+        'JSON',
+        'stringify'
+    ],
+    '%MapPrototype%': [
+        'Map',
+        'prototype'
+    ],
+    '%NumberPrototype%': [
+        'Number',
+        'prototype'
+    ],
+    '%ObjectPrototype%': [
+        'Object',
+        'prototype'
+    ],
+    '%ObjProto_toString%': [
+        'Object',
+        'prototype',
+        'toString'
+    ],
+    '%ObjProto_valueOf%': [
+        'Object',
+        'prototype',
+        'valueOf'
+    ],
+    '%PromisePrototype%': [
+        'Promise',
+        'prototype'
+    ],
+    '%PromiseProto_then%': [
+        'Promise',
+        'prototype',
+        'then'
+    ],
+    '%Promise_all%': [
+        'Promise',
+        'all'
+    ],
+    '%Promise_reject%': [
+        'Promise',
+        'reject'
+    ],
+    '%Promise_resolve%': [
+        'Promise',
+        'resolve'
+    ],
+    '%RangeErrorPrototype%': [
+        'RangeError',
+        'prototype'
+    ],
+    '%ReferenceErrorPrototype%': [
+        'ReferenceError',
+        'prototype'
+    ],
+    '%RegExpPrototype%': [
+        'RegExp',
+        'prototype'
+    ],
+    '%SetPrototype%': [
+        'Set',
+        'prototype'
+    ],
+    '%SharedArrayBufferPrototype%': [
+        'SharedArrayBuffer',
+        'prototype'
+    ],
+    '%StringPrototype%': [
+        'String',
+        'prototype'
+    ],
+    '%SymbolPrototype%': [
+        'Symbol',
+        'prototype'
+    ],
+    '%SyntaxErrorPrototype%': [
+        'SyntaxError',
+        'prototype'
+    ],
+    '%TypedArrayPrototype%': [
+        'TypedArray',
+        'prototype'
+    ],
+    '%TypeErrorPrototype%': [
+        'TypeError',
+        'prototype'
+    ],
+    '%Uint8ArrayPrototype%': [
+        'Uint8Array',
+        'prototype'
+    ],
+    '%Uint8ClampedArrayPrototype%': [
+        'Uint8ClampedArray',
+        'prototype'
+    ],
+    '%Uint16ArrayPrototype%': [
+        'Uint16Array',
+        'prototype'
+    ],
+    '%Uint32ArrayPrototype%': [
+        'Uint32Array',
+        'prototype'
+    ],
+    '%URIErrorPrototype%': [
+        'URIError',
+        'prototype'
+    ],
+    '%WeakMapPrototype%': [
+        'WeakMap',
+        'prototype'
+    ],
+    '%WeakSetPrototype%': [
+        'WeakSet',
+        'prototype'
+    ]
+};
+import   "b37750ce4082e8b1650c82b7b1bebfc3:function-bind";
+import   "b37750ce4082e8b1650c82b7b1bebfc3:has";
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$$concat = $b37750ce4082e8b1650c82b7b1bebfc3$import$cd14fe852de5d838$a4b4c796a132eb0a(Function.call, Array.prototype.concat);
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$$spliceApply = $b37750ce4082e8b1650c82b7b1bebfc3$import$cd14fe852de5d838$a4b4c796a132eb0a(Function.apply, Array.prototype.splice);
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$$replace = $b37750ce4082e8b1650c82b7b1bebfc3$import$cd14fe852de5d838$a4b4c796a132eb0a(Function.call, String.prototype.replace);
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$$strSlice = $b37750ce4082e8b1650c82b7b1bebfc3$import$cd14fe852de5d838$a4b4c796a132eb0a(Function.call, String.prototype.slice);
+/* adapted from https://github.com/lodash/lodash/blob/4.17.15/dist/lodash.js#L6735-L6744 */ var $b37750ce4082e8b1650c82b7b1bebfc3$var$rePropName = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g;
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$reEscapeChar = /\\(\\)?/g; /** Used to match backslashes in property paths. */ 
+var $b37750ce4082e8b1650c82b7b1bebfc3$var$stringToPath = function stringToPath(string) {
+    var first = $b37750ce4082e8b1650c82b7b1bebfc3$var$$strSlice(string, 0, 1);
+    var last = $b37750ce4082e8b1650c82b7b1bebfc3$var$$strSlice(string, -1);
+    if (first === '%' && last !== '%') throw new $b37750ce4082e8b1650c82b7b1bebfc3$var$$SyntaxError('invalid intrinsic syntax, expected closing `%`');
+    else if (last === '%' && first !== '%') throw new $b37750ce4082e8b1650c82b7b1bebfc3$var$$SyntaxError('invalid intrinsic syntax, expected opening `%`');
+    var result = [];
+    $b37750ce4082e8b1650c82b7b1bebfc3$var$$replace(string, $b37750ce4082e8b1650c82b7b1bebfc3$var$rePropName, function(match, number, quote, subString) {
+        result[result.length] = quote ? $b37750ce4082e8b1650c82b7b1bebfc3$var$$replace(subString, $b37750ce4082e8b1650c82b7b1bebfc3$var$reEscapeChar, '$1') : number || match;
+    });
+    return result;
+};
+/* end adaptation */ var $b37750ce4082e8b1650c82b7b1bebfc3$var$getBaseIntrinsic = function getBaseIntrinsic(name, allowMissing) {
+    var intrinsicName = name;
+    var alias;
+    if ($b37750ce4082e8b1650c82b7b1bebfc3$import$2ae9c6247c57563e($b37750ce4082e8b1650c82b7b1bebfc3$var$LEGACY_ALIASES, intrinsicName)) {
+        alias = $b37750ce4082e8b1650c82b7b1bebfc3$var$LEGACY_ALIASES[intrinsicName];
+        intrinsicName = '%' + alias[0] + '%';
+    }
+    if ($b37750ce4082e8b1650c82b7b1bebfc3$import$2ae9c6247c57563e($b37750ce4082e8b1650c82b7b1bebfc3$var$INTRINSICS, intrinsicName)) {
+        var value = $b37750ce4082e8b1650c82b7b1bebfc3$var$INTRINSICS[intrinsicName];
+        if (value === $b37750ce4082e8b1650c82b7b1bebfc3$var$needsEval) value = $b37750ce4082e8b1650c82b7b1bebfc3$var$doEval(intrinsicName);
+        if (typeof value === 'undefined' && !allowMissing) throw new $b37750ce4082e8b1650c82b7b1bebfc3$var$$TypeError('intrinsic ' + name + ' exists, but is not available. Please file an issue!');
+        return {
+            alias: alias,
+            name: intrinsicName,
+            value: value
+        };
+    }
+    throw new $b37750ce4082e8b1650c82b7b1bebfc3$var$$SyntaxError('intrinsic ' + name + ' does not exist!');
+};
+$b37750ce4082e8b1650c82b7b1bebfc3$exports = function GetIntrinsic(name, allowMissing) {
+    if (typeof name !== 'string' || name.length === 0) throw new $b37750ce4082e8b1650c82b7b1bebfc3$var$$TypeError('intrinsic name must be a non-empty string');
+    if (arguments.length > 1 && typeof allowMissing !== 'boolean') throw new $b37750ce4082e8b1650c82b7b1bebfc3$var$$TypeError('"allowMissing" argument must be a boolean');
+    var parts = $b37750ce4082e8b1650c82b7b1bebfc3$var$stringToPath(name);
+    var intrinsicBaseName = parts.length > 0 ? parts[0] : '';
+    var intrinsic = $b37750ce4082e8b1650c82b7b1bebfc3$var$getBaseIntrinsic('%' + intrinsicBaseName + '%', allowMissing);
+    var intrinsicRealName = intrinsic.name;
+    var value = intrinsic.value;
+    var skipFurtherCaching = false;
+    var alias = intrinsic.alias;
+    if (alias) {
+        intrinsicBaseName = alias[0];
+        $b37750ce4082e8b1650c82b7b1bebfc3$var$$spliceApply(parts, $b37750ce4082e8b1650c82b7b1bebfc3$var$$concat([
+            0,
+            1
+        ], alias));
+    }
+    for(var i = 1, isOwn = true; i < parts.length; i += 1){
+        var part = parts[i];
+        var first = $b37750ce4082e8b1650c82b7b1bebfc3$var$$strSlice(part, 0, 1);
+        var last = $b37750ce4082e8b1650c82b7b1bebfc3$var$$strSlice(part, -1);
+        if ((first === '"' || first === "'" || first === '`' || last === '"' || last === "'" || last === '`') && first !== last) throw new $b37750ce4082e8b1650c82b7b1bebfc3$var$$SyntaxError('property names with quotes must have matching quotes');
+        if (part === 'constructor' || !isOwn) skipFurtherCaching = true;
+        intrinsicBaseName += '.' + part;
+        intrinsicRealName = '%' + intrinsicBaseName + '%';
+        if ($b37750ce4082e8b1650c82b7b1bebfc3$import$2ae9c6247c57563e($b37750ce4082e8b1650c82b7b1bebfc3$var$INTRINSICS, intrinsicRealName)) value = $b37750ce4082e8b1650c82b7b1bebfc3$var$INTRINSICS[intrinsicRealName];
+        else if (value != null) {
+            if (!(part in value)) {
+                if (!allowMissing) throw new $b37750ce4082e8b1650c82b7b1bebfc3$var$$TypeError('base intrinsic for ' + name + ' exists, but the property is not available.');
+                return void 0;
+            }
+            if ($b37750ce4082e8b1650c82b7b1bebfc3$var$$gOPD && i + 1 >= parts.length) {
+                var desc = $b37750ce4082e8b1650c82b7b1bebfc3$var$$gOPD(value, part);
+                isOwn = !!desc;
+                // By convention, when a data property is converted to an accessor
+                // property to emulate a data property that does not suffer from
+                // the override mistake, that accessor's getter is marked with
+                // an `originalValue` property. Here, when we detect this, we
+                // uphold the illusion by pretending to see that original data
+                // property, i.e., returning the value rather than the getter
+                // itself.
+                if (isOwn && 'get' in desc && !('originalValue' in desc.get)) value = desc.get;
+                else value = value[part];
+            } else {
+                isOwn = $b37750ce4082e8b1650c82b7b1bebfc3$import$2ae9c6247c57563e(value, part);
+                value = value[part];
+            }
+            if (isOwn && !skipFurtherCaching) $b37750ce4082e8b1650c82b7b1bebfc3$var$INTRINSICS[intrinsicRealName] = value;
+        }
+    }
+    return value;
+};

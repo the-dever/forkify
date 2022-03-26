@@ -1,0 +1,14 @@
+'use strict';
+import   "a240745461904ecfde45efd0dc4ffa53:./polyfill";
+import   "a240745461904ecfde45efd0dc4ffa53:define-properties";
+$a240745461904ecfde45efd0dc4ffa53$exports = function shimObjectIs() {
+    var polyfill = $a240745461904ecfde45efd0dc4ffa53$import$845c26d6debe782f();
+    $a240745461904ecfde45efd0dc4ffa53$import$19306aeffbeaaf25(Object, {
+        is: polyfill
+    }, {
+        is: function testObjectIs() {
+            return Object.is !== polyfill;
+        }
+    });
+    return polyfill;
+};

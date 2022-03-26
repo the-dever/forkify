@@ -1,0 +1,3 @@
+'use strict';
+import   "132367bf3c7ddfbf23cb81d4624fc728:function-bind";
+$132367bf3c7ddfbf23cb81d4624fc728$exports = $132367bf3c7ddfbf23cb81d4624fc728$import$cd14fe852de5d838$a4b4c796a132eb0a(Function.call, Object.prototype.hasOwnProperty);

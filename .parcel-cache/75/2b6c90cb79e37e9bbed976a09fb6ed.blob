@@ -1,0 +1,28 @@
+'use strict';
+var $ace14f695ff84c75902383371fceb396$var$toStr = Object.prototype.toString;
+var $ace14f695ff84c75902383371fceb396$var$fnToStr = Function.prototype.toString;
+var $ace14f695ff84c75902383371fceb396$var$isFnRegex = /^\s*(?:function)?\*/;
+var $ace14f695ff84c75902383371fceb396$var$hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
+var $ace14f695ff84c75902383371fceb396$var$getProto = Object.getPrototypeOf;
+var $ace14f695ff84c75902383371fceb396$var$getGeneratorFunc = function() {
+    if (!$ace14f695ff84c75902383371fceb396$var$hasToStringTag) return false;
+    try {
+        return Function('return function*() {}')();
+    } catch (e) {
+    }
+};
+var $ace14f695ff84c75902383371fceb396$var$GeneratorFunction;
+$ace14f695ff84c75902383371fceb396$exports = function isGeneratorFunction(fn) {
+    if (typeof fn !== 'function') return false;
+    if ($ace14f695ff84c75902383371fceb396$var$isFnRegex.test($ace14f695ff84c75902383371fceb396$var$fnToStr.call(fn))) return true;
+    if (!$ace14f695ff84c75902383371fceb396$var$hasToStringTag) {
+        var str = $ace14f695ff84c75902383371fceb396$var$toStr.call(fn);
+        return str === '[object GeneratorFunction]';
+    }
+    if (!$ace14f695ff84c75902383371fceb396$var$getProto) return false;
+    if (typeof $ace14f695ff84c75902383371fceb396$var$GeneratorFunction === 'undefined') {
+        var generatorFunc = $ace14f695ff84c75902383371fceb396$var$getGeneratorFunc();
+        $ace14f695ff84c75902383371fceb396$var$GeneratorFunction = generatorFunc ? $ace14f695ff84c75902383371fceb396$var$getProto(generatorFunc) : false;
+    }
+    return $ace14f695ff84c75902383371fceb396$var$getProto(fn) === $ace14f695ff84c75902383371fceb396$var$GeneratorFunction;
+};

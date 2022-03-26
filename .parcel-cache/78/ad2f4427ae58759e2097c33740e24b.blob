@@ -1,0 +1,209 @@
+// Currently in sync with Node.js lib/internal/util/types.js
+// https://github.com/nodejs/node/commit/112cc7c27551254aa2b17098fb774867f05ed0d9
+'use strict';
+import   "27234c7bac5c0b767e0fdf9c95951232:is-arguments";
+import   "27234c7bac5c0b767e0fdf9c95951232:is-generator-function";
+import   "27234c7bac5c0b767e0fdf9c95951232:which-typed-array";
+import   "27234c7bac5c0b767e0fdf9c95951232:is-typed-array";
+function $27234c7bac5c0b767e0fdf9c95951232$var$uncurryThis(f) {
+    return f.call.bind(f);
+}
+var $27234c7bac5c0b767e0fdf9c95951232$var$BigIntSupported = typeof BigInt !== 'undefined';
+var $27234c7bac5c0b767e0fdf9c95951232$var$SymbolSupported = typeof Symbol !== 'undefined';
+var $27234c7bac5c0b767e0fdf9c95951232$var$ObjectToString = $27234c7bac5c0b767e0fdf9c95951232$var$uncurryThis(Object.prototype.toString);
+var $27234c7bac5c0b767e0fdf9c95951232$var$numberValue = $27234c7bac5c0b767e0fdf9c95951232$var$uncurryThis(Number.prototype.valueOf);
+var $27234c7bac5c0b767e0fdf9c95951232$var$stringValue = $27234c7bac5c0b767e0fdf9c95951232$var$uncurryThis(String.prototype.valueOf);
+var $27234c7bac5c0b767e0fdf9c95951232$var$booleanValue = $27234c7bac5c0b767e0fdf9c95951232$var$uncurryThis(Boolean.prototype.valueOf);
+if ($27234c7bac5c0b767e0fdf9c95951232$var$BigIntSupported) var $27234c7bac5c0b767e0fdf9c95951232$var$bigIntValue = $27234c7bac5c0b767e0fdf9c95951232$var$uncurryThis(BigInt.prototype.valueOf);
+if ($27234c7bac5c0b767e0fdf9c95951232$var$SymbolSupported) var $27234c7bac5c0b767e0fdf9c95951232$var$symbolValue = $27234c7bac5c0b767e0fdf9c95951232$var$uncurryThis(Symbol.prototype.valueOf);
+function $27234c7bac5c0b767e0fdf9c95951232$var$checkBoxedPrimitive(value, prototypeValueOf) {
+    if (typeof value !== 'object') return false;
+    try {
+        prototypeValueOf(value);
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isArgumentsObject = $27234c7bac5c0b767e0fdf9c95951232$import$408ff664d1499543;
+$27234c7bac5c0b767e0fdf9c95951232$exports.isGeneratorFunction = $27234c7bac5c0b767e0fdf9c95951232$import$a75df9fbd30f1ce3;
+$27234c7bac5c0b767e0fdf9c95951232$exports.isTypedArray = $27234c7bac5c0b767e0fdf9c95951232$import$f825e3823b931a39;
+// Taken from here and modified for better browser support
+// https://github.com/sindresorhus/p-is-promise/blob/cda35a513bda03f977ad5cde3a079d237e82d7ef/index.js
+function $27234c7bac5c0b767e0fdf9c95951232$var$isPromise(input) {
+    return typeof Promise !== 'undefined' && input instanceof Promise || input !== null && typeof input === 'object' && typeof input.then === 'function' && typeof input.catch === 'function';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isPromise = $27234c7bac5c0b767e0fdf9c95951232$var$isPromise;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isArrayBufferView(value) {
+    if (typeof ArrayBuffer !== 'undefined' && ArrayBuffer.isView) return ArrayBuffer.isView(value);
+    return $27234c7bac5c0b767e0fdf9c95951232$import$f825e3823b931a39(value) || $27234c7bac5c0b767e0fdf9c95951232$var$isDataView(value);
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isArrayBufferView = $27234c7bac5c0b767e0fdf9c95951232$var$isArrayBufferView;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isUint8Array(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$import$54c53c2a3a3041b8(value) === 'Uint8Array';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isUint8Array = $27234c7bac5c0b767e0fdf9c95951232$var$isUint8Array;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isUint8ClampedArray(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$import$54c53c2a3a3041b8(value) === 'Uint8ClampedArray';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isUint8ClampedArray = $27234c7bac5c0b767e0fdf9c95951232$var$isUint8ClampedArray;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isUint16Array(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$import$54c53c2a3a3041b8(value) === 'Uint16Array';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isUint16Array = $27234c7bac5c0b767e0fdf9c95951232$var$isUint16Array;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isUint32Array(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$import$54c53c2a3a3041b8(value) === 'Uint32Array';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isUint32Array = $27234c7bac5c0b767e0fdf9c95951232$var$isUint32Array;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isInt8Array(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$import$54c53c2a3a3041b8(value) === 'Int8Array';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isInt8Array = $27234c7bac5c0b767e0fdf9c95951232$var$isInt8Array;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isInt16Array(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$import$54c53c2a3a3041b8(value) === 'Int16Array';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isInt16Array = $27234c7bac5c0b767e0fdf9c95951232$var$isInt16Array;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isInt32Array(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$import$54c53c2a3a3041b8(value) === 'Int32Array';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isInt32Array = $27234c7bac5c0b767e0fdf9c95951232$var$isInt32Array;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isFloat32Array(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$import$54c53c2a3a3041b8(value) === 'Float32Array';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isFloat32Array = $27234c7bac5c0b767e0fdf9c95951232$var$isFloat32Array;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isFloat64Array(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$import$54c53c2a3a3041b8(value) === 'Float64Array';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isFloat64Array = $27234c7bac5c0b767e0fdf9c95951232$var$isFloat64Array;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isBigInt64Array(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$import$54c53c2a3a3041b8(value) === 'BigInt64Array';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isBigInt64Array = $27234c7bac5c0b767e0fdf9c95951232$var$isBigInt64Array;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isBigUint64Array(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$import$54c53c2a3a3041b8(value) === 'BigUint64Array';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isBigUint64Array = $27234c7bac5c0b767e0fdf9c95951232$var$isBigUint64Array;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isMapToString(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$ObjectToString(value) === '[object Map]';
+}
+$27234c7bac5c0b767e0fdf9c95951232$var$isMapToString.working = typeof Map !== 'undefined' && $27234c7bac5c0b767e0fdf9c95951232$var$isMapToString(new Map());
+function $27234c7bac5c0b767e0fdf9c95951232$var$isMap(value) {
+    if (typeof Map === 'undefined') return false;
+    return $27234c7bac5c0b767e0fdf9c95951232$var$isMapToString.working ? $27234c7bac5c0b767e0fdf9c95951232$var$isMapToString(value) : value instanceof Map;
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isMap = $27234c7bac5c0b767e0fdf9c95951232$var$isMap;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isSetToString(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$ObjectToString(value) === '[object Set]';
+}
+$27234c7bac5c0b767e0fdf9c95951232$var$isSetToString.working = typeof Set !== 'undefined' && $27234c7bac5c0b767e0fdf9c95951232$var$isSetToString(new Set());
+function $27234c7bac5c0b767e0fdf9c95951232$var$isSet(value) {
+    if (typeof Set === 'undefined') return false;
+    return $27234c7bac5c0b767e0fdf9c95951232$var$isSetToString.working ? $27234c7bac5c0b767e0fdf9c95951232$var$isSetToString(value) : value instanceof Set;
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isSet = $27234c7bac5c0b767e0fdf9c95951232$var$isSet;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isWeakMapToString(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$ObjectToString(value) === '[object WeakMap]';
+}
+$27234c7bac5c0b767e0fdf9c95951232$var$isWeakMapToString.working = typeof WeakMap !== 'undefined' && $27234c7bac5c0b767e0fdf9c95951232$var$isWeakMapToString(new WeakMap());
+function $27234c7bac5c0b767e0fdf9c95951232$var$isWeakMap(value) {
+    if (typeof WeakMap === 'undefined') return false;
+    return $27234c7bac5c0b767e0fdf9c95951232$var$isWeakMapToString.working ? $27234c7bac5c0b767e0fdf9c95951232$var$isWeakMapToString(value) : value instanceof WeakMap;
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isWeakMap = $27234c7bac5c0b767e0fdf9c95951232$var$isWeakMap;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isWeakSetToString(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$ObjectToString(value) === '[object WeakSet]';
+}
+$27234c7bac5c0b767e0fdf9c95951232$var$isWeakSetToString.working = typeof WeakSet !== 'undefined' && $27234c7bac5c0b767e0fdf9c95951232$var$isWeakSetToString(new WeakSet());
+function $27234c7bac5c0b767e0fdf9c95951232$var$isWeakSet(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$isWeakSetToString(value);
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isWeakSet = $27234c7bac5c0b767e0fdf9c95951232$var$isWeakSet;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isArrayBufferToString(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$ObjectToString(value) === '[object ArrayBuffer]';
+}
+$27234c7bac5c0b767e0fdf9c95951232$var$isArrayBufferToString.working = typeof ArrayBuffer !== 'undefined' && $27234c7bac5c0b767e0fdf9c95951232$var$isArrayBufferToString(new ArrayBuffer());
+function $27234c7bac5c0b767e0fdf9c95951232$var$isArrayBuffer(value) {
+    if (typeof ArrayBuffer === 'undefined') return false;
+    return $27234c7bac5c0b767e0fdf9c95951232$var$isArrayBufferToString.working ? $27234c7bac5c0b767e0fdf9c95951232$var$isArrayBufferToString(value) : value instanceof ArrayBuffer;
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isArrayBuffer = $27234c7bac5c0b767e0fdf9c95951232$var$isArrayBuffer;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isDataViewToString(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$ObjectToString(value) === '[object DataView]';
+}
+$27234c7bac5c0b767e0fdf9c95951232$var$isDataViewToString.working = typeof ArrayBuffer !== 'undefined' && typeof DataView !== 'undefined' && $27234c7bac5c0b767e0fdf9c95951232$var$isDataViewToString(new DataView(new ArrayBuffer(1), 0, 1));
+function $27234c7bac5c0b767e0fdf9c95951232$var$isDataView(value) {
+    if (typeof DataView === 'undefined') return false;
+    return $27234c7bac5c0b767e0fdf9c95951232$var$isDataViewToString.working ? $27234c7bac5c0b767e0fdf9c95951232$var$isDataViewToString(value) : value instanceof DataView;
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isDataView = $27234c7bac5c0b767e0fdf9c95951232$var$isDataView;
+// Store a copy of SharedArrayBuffer in case it's deleted elsewhere
+var $27234c7bac5c0b767e0fdf9c95951232$var$SharedArrayBufferCopy = typeof SharedArrayBuffer !== 'undefined' ? SharedArrayBuffer : undefined;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isSharedArrayBufferToString(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$ObjectToString(value) === '[object SharedArrayBuffer]';
+}
+function $27234c7bac5c0b767e0fdf9c95951232$var$isSharedArrayBuffer(value) {
+    if (typeof $27234c7bac5c0b767e0fdf9c95951232$var$SharedArrayBufferCopy === 'undefined') return false;
+    if (typeof $27234c7bac5c0b767e0fdf9c95951232$var$isSharedArrayBufferToString.working === 'undefined') $27234c7bac5c0b767e0fdf9c95951232$var$isSharedArrayBufferToString.working = $27234c7bac5c0b767e0fdf9c95951232$var$isSharedArrayBufferToString(new $27234c7bac5c0b767e0fdf9c95951232$var$SharedArrayBufferCopy());
+    return $27234c7bac5c0b767e0fdf9c95951232$var$isSharedArrayBufferToString.working ? $27234c7bac5c0b767e0fdf9c95951232$var$isSharedArrayBufferToString(value) : value instanceof $27234c7bac5c0b767e0fdf9c95951232$var$SharedArrayBufferCopy;
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isSharedArrayBuffer = $27234c7bac5c0b767e0fdf9c95951232$var$isSharedArrayBuffer;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isAsyncFunction(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$ObjectToString(value) === '[object AsyncFunction]';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isAsyncFunction = $27234c7bac5c0b767e0fdf9c95951232$var$isAsyncFunction;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isMapIterator(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$ObjectToString(value) === '[object Map Iterator]';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isMapIterator = $27234c7bac5c0b767e0fdf9c95951232$var$isMapIterator;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isSetIterator(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$ObjectToString(value) === '[object Set Iterator]';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isSetIterator = $27234c7bac5c0b767e0fdf9c95951232$var$isSetIterator;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isGeneratorObject(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$ObjectToString(value) === '[object Generator]';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isGeneratorObject = $27234c7bac5c0b767e0fdf9c95951232$var$isGeneratorObject;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isWebAssemblyCompiledModule(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$ObjectToString(value) === '[object WebAssembly.Module]';
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isWebAssemblyCompiledModule = $27234c7bac5c0b767e0fdf9c95951232$var$isWebAssemblyCompiledModule;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isNumberObject(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$checkBoxedPrimitive(value, $27234c7bac5c0b767e0fdf9c95951232$var$numberValue);
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isNumberObject = $27234c7bac5c0b767e0fdf9c95951232$var$isNumberObject;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isStringObject(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$checkBoxedPrimitive(value, $27234c7bac5c0b767e0fdf9c95951232$var$stringValue);
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isStringObject = $27234c7bac5c0b767e0fdf9c95951232$var$isStringObject;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isBooleanObject(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$checkBoxedPrimitive(value, $27234c7bac5c0b767e0fdf9c95951232$var$booleanValue);
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isBooleanObject = $27234c7bac5c0b767e0fdf9c95951232$var$isBooleanObject;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isBigIntObject(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$BigIntSupported && $27234c7bac5c0b767e0fdf9c95951232$var$checkBoxedPrimitive(value, $27234c7bac5c0b767e0fdf9c95951232$var$bigIntValue);
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isBigIntObject = $27234c7bac5c0b767e0fdf9c95951232$var$isBigIntObject;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isSymbolObject(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$SymbolSupported && $27234c7bac5c0b767e0fdf9c95951232$var$checkBoxedPrimitive(value, $27234c7bac5c0b767e0fdf9c95951232$var$symbolValue);
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isSymbolObject = $27234c7bac5c0b767e0fdf9c95951232$var$isSymbolObject;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isBoxedPrimitive(value) {
+    return $27234c7bac5c0b767e0fdf9c95951232$var$isNumberObject(value) || $27234c7bac5c0b767e0fdf9c95951232$var$isStringObject(value) || $27234c7bac5c0b767e0fdf9c95951232$var$isBooleanObject(value) || $27234c7bac5c0b767e0fdf9c95951232$var$isBigIntObject(value) || $27234c7bac5c0b767e0fdf9c95951232$var$isSymbolObject(value);
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isBoxedPrimitive = $27234c7bac5c0b767e0fdf9c95951232$var$isBoxedPrimitive;
+function $27234c7bac5c0b767e0fdf9c95951232$var$isAnyArrayBuffer(value) {
+    return typeof Uint8Array !== 'undefined' && ($27234c7bac5c0b767e0fdf9c95951232$var$isArrayBuffer(value) || $27234c7bac5c0b767e0fdf9c95951232$var$isSharedArrayBuffer(value));
+}
+$27234c7bac5c0b767e0fdf9c95951232$exports.isAnyArrayBuffer = $27234c7bac5c0b767e0fdf9c95951232$var$isAnyArrayBuffer;
+[
+    'isProxy',
+    'isExternal',
+    'isModuleNamespaceObject'
+].forEach(function(method) {
+    Object.defineProperty($27234c7bac5c0b767e0fdf9c95951232$exports, method, {
+        enumerable: false,
+        value: function() {
+            throw new Error(method + ' is not supported in userland');
+        }
+    });
+});

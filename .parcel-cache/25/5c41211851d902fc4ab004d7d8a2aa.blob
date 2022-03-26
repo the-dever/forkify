@@ -1,0 +1,10 @@
+var $14f568fe6172d7044e472a123f682682$var$hasOwn = Object.prototype.hasOwnProperty;
+var $14f568fe6172d7044e472a123f682682$var$toString = Object.prototype.toString;
+$14f568fe6172d7044e472a123f682682$exports = function forEach(obj, fn, ctx) {
+    if ($14f568fe6172d7044e472a123f682682$var$toString.call(fn) !== '[object Function]') throw new TypeError('iterator must be a function');
+    var l = obj.length;
+    if (l === +l) for(var i = 0; i < l; i++)fn.call(ctx, obj[i], i, obj);
+    else {
+        for(var k in obj)if ($14f568fe6172d7044e472a123f682682$var$hasOwn.call(obj, k)) fn.call(ctx, obj[k], k, obj);
+    }
+};

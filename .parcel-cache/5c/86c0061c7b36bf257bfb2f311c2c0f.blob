@@ -1,0 +1,5 @@
+'use strict';
+import   "8a5dc76037be96e242ea4c978c1e5d5d:./implementation";
+$8a5dc76037be96e242ea4c978c1e5d5d$exports = function getPolyfill() {
+    return typeof Object.is === 'function' ? Object.is : $8a5dc76037be96e242ea4c978c1e5d5d$import$88e6b8e95b0eaa25;
+};

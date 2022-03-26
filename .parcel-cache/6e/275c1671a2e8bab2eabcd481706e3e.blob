@@ -1,0 +1,50 @@
+'use strict';
+import   "1e2dba8479bbb4adcfcad666c4c4fa1a:foreach";
+import   "1e2dba8479bbb4adcfcad666c4c4fa1a:available-typed-arrays";
+import   "1e2dba8479bbb4adcfcad666c4c4fa1a:call-bind/callBound";
+var $1e2dba8479bbb4adcfcad666c4c4fa1a$var$$toString = $1e2dba8479bbb4adcfcad666c4c4fa1a$import$e19d4093e38a9e0('Object.prototype.toString');
+import   "1e2dba8479bbb4adcfcad666c4c4fa1a:has-symbols";
+var $1e2dba8479bbb4adcfcad666c4c4fa1a$var$hasSymbols = $1e2dba8479bbb4adcfcad666c4c4fa1a$import$6ef88b142bdc3e2a();
+var $1e2dba8479bbb4adcfcad666c4c4fa1a$var$hasToStringTag = $1e2dba8479bbb4adcfcad666c4c4fa1a$var$hasSymbols && typeof Symbol.toStringTag === 'symbol';
+var $1e2dba8479bbb4adcfcad666c4c4fa1a$var$typedArrays = $1e2dba8479bbb4adcfcad666c4c4fa1a$import$12deba2bda2b2082();
+var $1e2dba8479bbb4adcfcad666c4c4fa1a$var$$indexOf = $1e2dba8479bbb4adcfcad666c4c4fa1a$import$e19d4093e38a9e0('Array.prototype.indexOf', true) || function indexOf(array, value) {
+    for(var i = 0; i < array.length; i += 1){
+        if (array[i] === value) return i;
+    }
+    return -1;
+};
+var $1e2dba8479bbb4adcfcad666c4c4fa1a$var$$slice = $1e2dba8479bbb4adcfcad666c4c4fa1a$import$e19d4093e38a9e0('String.prototype.slice');
+var $1e2dba8479bbb4adcfcad666c4c4fa1a$var$toStrTags = {
+};
+import   "1e2dba8479bbb4adcfcad666c4c4fa1a:es-abstract/helpers/getOwnPropertyDescriptor";
+var $1e2dba8479bbb4adcfcad666c4c4fa1a$var$getPrototypeOf = Object.getPrototypeOf; // require('getprototypeof');
+if ($1e2dba8479bbb4adcfcad666c4c4fa1a$var$hasToStringTag && $1e2dba8479bbb4adcfcad666c4c4fa1a$import$8446c5815cd2b380 && $1e2dba8479bbb4adcfcad666c4c4fa1a$var$getPrototypeOf) $1e2dba8479bbb4adcfcad666c4c4fa1a$import$b82001361ca2da62($1e2dba8479bbb4adcfcad666c4c4fa1a$var$typedArrays, function(typedArray) {
+    var arr = new $parcel$global[typedArray]();
+    if (!(Symbol.toStringTag in arr)) throw new EvalError('this engine has support for Symbol.toStringTag, but ' + typedArray + ' does not have the property! Please report this.');
+    var proto = $1e2dba8479bbb4adcfcad666c4c4fa1a$var$getPrototypeOf(arr);
+    var descriptor = $1e2dba8479bbb4adcfcad666c4c4fa1a$import$8446c5815cd2b380(proto, Symbol.toStringTag);
+    if (!descriptor) {
+        var superProto = $1e2dba8479bbb4adcfcad666c4c4fa1a$var$getPrototypeOf(proto);
+        descriptor = $1e2dba8479bbb4adcfcad666c4c4fa1a$import$8446c5815cd2b380(superProto, Symbol.toStringTag);
+    }
+    $1e2dba8479bbb4adcfcad666c4c4fa1a$var$toStrTags[typedArray] = descriptor.get;
+});
+var $1e2dba8479bbb4adcfcad666c4c4fa1a$var$tryTypedArrays = function tryAllTypedArrays(value) {
+    var anyTrue = false;
+    $1e2dba8479bbb4adcfcad666c4c4fa1a$import$b82001361ca2da62($1e2dba8479bbb4adcfcad666c4c4fa1a$var$toStrTags, function(getter, typedArray) {
+        if (!anyTrue) try {
+            anyTrue = getter.call(value) === typedArray;
+        } catch (e) {
+        }
+    });
+    return anyTrue;
+};
+$1e2dba8479bbb4adcfcad666c4c4fa1a$exports = function isTypedArray(value) {
+    if (!value || typeof value !== 'object') return false;
+    if (!$1e2dba8479bbb4adcfcad666c4c4fa1a$var$hasToStringTag) {
+        var tag = $1e2dba8479bbb4adcfcad666c4c4fa1a$var$$slice($1e2dba8479bbb4adcfcad666c4c4fa1a$var$$toString(value), 8, -1);
+        return $1e2dba8479bbb4adcfcad666c4c4fa1a$var$$indexOf($1e2dba8479bbb4adcfcad666c4c4fa1a$var$typedArrays, tag) > -1;
+    }
+    if (!$1e2dba8479bbb4adcfcad666c4c4fa1a$import$8446c5815cd2b380) return false;
+    return $1e2dba8479bbb4adcfcad666c4c4fa1a$var$tryTypedArrays(value);
+};

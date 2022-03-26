@@ -1,0 +1,13 @@
+'use strict';
+import   "45b7fdafa0cae34209abdd968443562d:define-properties";
+import   "45b7fdafa0cae34209abdd968443562d:call-bind";
+import   "45b7fdafa0cae34209abdd968443562d:./implementation";
+import   "45b7fdafa0cae34209abdd968443562d:./polyfill";
+import   "45b7fdafa0cae34209abdd968443562d:./shim";
+var $45b7fdafa0cae34209abdd968443562d$var$polyfill = $45b7fdafa0cae34209abdd968443562d$import$575ee89d5e410d91($45b7fdafa0cae34209abdd968443562d$import$845c26d6debe782f(), Object);
+$45b7fdafa0cae34209abdd968443562d$import$19306aeffbeaaf25($45b7fdafa0cae34209abdd968443562d$var$polyfill, {
+    getPolyfill: $45b7fdafa0cae34209abdd968443562d$import$845c26d6debe782f,
+    implementation: $45b7fdafa0cae34209abdd968443562d$import$88e6b8e95b0eaa25,
+    shim: $45b7fdafa0cae34209abdd968443562d$import$fcb976ec100366e1
+});
+$45b7fdafa0cae34209abdd968443562d$exports = $45b7fdafa0cae34209abdd968443562d$var$polyfill;

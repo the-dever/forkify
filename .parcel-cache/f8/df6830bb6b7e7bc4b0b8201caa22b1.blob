@@ -1,0 +1,157 @@
+// Currently in sync with Node.js lib/internal/errors.js
+// https://github.com/nodejs/node/commit/3b044962c48fe313905877a96b5d0894a5404f6f
+/* eslint node-core/documented-errors: "error" */ /* eslint node-core/alphabetize-errors: "error" */ /* eslint node-core/prefer-util-format-errors: "error" */ var $1dbdbad51c9df434baf2c290617afb9c$export$dd9ccead5f5c2181;
+'use strict'; // The whole point behind this internal module is to allow Node.js to no
+// longer be forced to treat every error message change as a semver-major
+// change. The NodeError classes here all expose a `code` property whose
+// value statically and permanently identifies the error. While the error
+// message may change, the code should not.
+function $1dbdbad51c9df434baf2c290617afb9c$var$_typeof(obj) {
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") $1dbdbad51c9df434baf2c290617afb9c$var$_typeof = function _typeof(obj1) {
+        return typeof obj1;
+    };
+    else $1dbdbad51c9df434baf2c290617afb9c$var$_typeof = function _typeof1(obj1) {
+        return obj1 && typeof Symbol === "function" && obj1.constructor === Symbol && obj1 !== Symbol.prototype ? "symbol" : typeof obj1;
+    };
+    return $1dbdbad51c9df434baf2c290617afb9c$var$_typeof(obj);
+}
+function $1dbdbad51c9df434baf2c290617afb9c$var$_classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
+}
+function $1dbdbad51c9df434baf2c290617afb9c$var$_possibleConstructorReturn(self, call) {
+    if (call && ($1dbdbad51c9df434baf2c290617afb9c$var$_typeof(call) === "object" || typeof call === "function")) return call;
+    return $1dbdbad51c9df434baf2c290617afb9c$var$_assertThisInitialized(self);
+}
+function $1dbdbad51c9df434baf2c290617afb9c$var$_assertThisInitialized(self) {
+    if (self === void 0) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    return self;
+}
+function $1dbdbad51c9df434baf2c290617afb9c$var$_getPrototypeOf(o) {
+    $1dbdbad51c9df434baf2c290617afb9c$var$_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o1) {
+        return o1.__proto__ || Object.getPrototypeOf(o1);
+    };
+    return $1dbdbad51c9df434baf2c290617afb9c$var$_getPrototypeOf(o);
+}
+function $1dbdbad51c9df434baf2c290617afb9c$var$_inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) throw new TypeError("Super expression must either be null or a function");
+    subClass.prototype = Object.create(superClass && superClass.prototype, {
+        constructor: {
+            value: subClass,
+            writable: true,
+            configurable: true
+        }
+    });
+    if (superClass) $1dbdbad51c9df434baf2c290617afb9c$var$_setPrototypeOf(subClass, superClass);
+}
+function $1dbdbad51c9df434baf2c290617afb9c$var$_setPrototypeOf(o, p) {
+    $1dbdbad51c9df434baf2c290617afb9c$var$_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o1, p1) {
+        o1.__proto__ = p1;
+        return o1;
+    };
+    return $1dbdbad51c9df434baf2c290617afb9c$var$_setPrototypeOf(o, p);
+}
+var $1dbdbad51c9df434baf2c290617afb9c$var$codes = {
+}; // Lazy loaded
+var $1dbdbad51c9df434baf2c290617afb9c$var$assert;
+var $1dbdbad51c9df434baf2c290617afb9c$var$util;
+function $1dbdbad51c9df434baf2c290617afb9c$var$createErrorType(code, message, Base) {
+    if (!Base) Base = Error;
+    function getMessage(arg1, arg2, arg3) {
+        if (typeof message === 'string') return message;
+        else return message(arg1, arg2, arg3);
+    }
+    var NodeError1 = /*#__PURE__*/ function(_Base) {
+        $1dbdbad51c9df434baf2c290617afb9c$var$_inherits(NodeError2, _Base);
+        function NodeError2(arg1, arg2, arg3) {
+            var _this;
+            $1dbdbad51c9df434baf2c290617afb9c$var$_classCallCheck(this, NodeError2);
+            _this = $1dbdbad51c9df434baf2c290617afb9c$var$_possibleConstructorReturn(this, $1dbdbad51c9df434baf2c290617afb9c$var$_getPrototypeOf(NodeError2).call(this, getMessage(arg1, arg2, arg3)));
+            _this.code = code;
+            return _this;
+        }
+        return NodeError2;
+    }(Base);
+    $1dbdbad51c9df434baf2c290617afb9c$var$codes[code] = NodeError1;
+} // https://github.com/nodejs/node/blob/v10.8.0/lib/internal/errors.js
+function $1dbdbad51c9df434baf2c290617afb9c$var$oneOf(expected, thing) {
+    if (Array.isArray(expected)) {
+        var len = expected.length;
+        expected = expected.map(function(i) {
+            return String(i);
+        });
+        if (len > 2) return "one of ".concat(thing, " ").concat(expected.slice(0, len - 1).join(', '), ", or ") + expected[len - 1];
+        else if (len === 2) return "one of ".concat(thing, " ").concat(expected[0], " or ").concat(expected[1]);
+        else return "of ".concat(thing, " ").concat(expected[0]);
+    } else return "of ".concat(thing, " ").concat(String(expected));
+} // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith
+function $1dbdbad51c9df434baf2c290617afb9c$var$startsWith(str, search, pos) {
+    return str.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search;
+} // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith
+function $1dbdbad51c9df434baf2c290617afb9c$var$endsWith(str, search, this_len) {
+    if (this_len === undefined || this_len > str.length) this_len = str.length;
+    return str.substring(this_len - search.length, this_len) === search;
+} // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
+function $1dbdbad51c9df434baf2c290617afb9c$var$includes(str, search, start) {
+    if (typeof start !== 'number') start = 0;
+    if (start + search.length > str.length) return false;
+    else return str.indexOf(search, start) !== -1;
+}
+$1dbdbad51c9df434baf2c290617afb9c$var$createErrorType('ERR_AMBIGUOUS_ARGUMENT', 'The "%s" argument is ambiguous. %s', TypeError);
+import   "1dbdbad51c9df434baf2c290617afb9c:../assert";
+$1dbdbad51c9df434baf2c290617afb9c$var$createErrorType('ERR_INVALID_ARG_TYPE', function(name, expected, actual) {
+    if ($1dbdbad51c9df434baf2c290617afb9c$var$assert === undefined) $1dbdbad51c9df434baf2c290617afb9c$var$assert = $1dbdbad51c9df434baf2c290617afb9c$import$ea155c2571caca83;
+    $1dbdbad51c9df434baf2c290617afb9c$var$assert(typeof name === 'string', "'name' must be a string"); // determiner: 'must be' or 'must not be'
+    var determiner;
+    if (typeof expected === 'string' && $1dbdbad51c9df434baf2c290617afb9c$var$startsWith(expected, 'not ')) {
+        determiner = 'must not be';
+        expected = expected.replace(/^not /, '');
+    } else determiner = 'must be';
+    var msg;
+    if ($1dbdbad51c9df434baf2c290617afb9c$var$endsWith(name, ' argument')) // For cases like 'first argument'
+    msg = "The ".concat(name, " ").concat(determiner, " ").concat($1dbdbad51c9df434baf2c290617afb9c$var$oneOf(expected, 'type'));
+    else {
+        var type = $1dbdbad51c9df434baf2c290617afb9c$var$includes(name, '.') ? 'property' : 'argument';
+        msg = "The \"".concat(name, "\" ").concat(type, " ").concat(determiner, " ").concat($1dbdbad51c9df434baf2c290617afb9c$var$oneOf(expected, 'type'));
+    } // TODO(BridgeAR): Improve the output by showing `null` and similar.
+    msg += ". Received type ".concat($1dbdbad51c9df434baf2c290617afb9c$var$_typeof(actual));
+    return msg;
+}, TypeError);
+import   "1dbdbad51c9df434baf2c290617afb9c:util/";
+$1dbdbad51c9df434baf2c290617afb9c$var$createErrorType('ERR_INVALID_ARG_VALUE', function(name, value) {
+    var reason = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'is invalid';
+    if ($1dbdbad51c9df434baf2c290617afb9c$var$util === undefined) $1dbdbad51c9df434baf2c290617afb9c$var$util = $1dbdbad51c9df434baf2c290617afb9c$import$a8f7a01d0a9212e2;
+    var inspected = $1dbdbad51c9df434baf2c290617afb9c$var$util.inspect(value);
+    if (inspected.length > 128) inspected = "".concat(inspected.slice(0, 128), "...");
+    return "The argument '".concat(name, "' ").concat(reason, ". Received ").concat(inspected);
+}, TypeError, RangeError);
+$1dbdbad51c9df434baf2c290617afb9c$var$createErrorType('ERR_INVALID_RETURN_VALUE', function(input, name, value) {
+    var type;
+    if (value && value.constructor && value.constructor.name) type = "instance of ".concat(value.constructor.name);
+    else type = "type ".concat($1dbdbad51c9df434baf2c290617afb9c$var$_typeof(value));
+    return "Expected ".concat(input, " to be returned from the \"").concat(name, "\"") + " function but got ".concat(type, ".");
+}, TypeError);
+import   "1dbdbad51c9df434baf2c290617afb9c:../assert";
+$1dbdbad51c9df434baf2c290617afb9c$var$createErrorType('ERR_MISSING_ARGS', function() {
+    for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)args[_key] = arguments[_key];
+    if ($1dbdbad51c9df434baf2c290617afb9c$var$assert === undefined) $1dbdbad51c9df434baf2c290617afb9c$var$assert = $1dbdbad51c9df434baf2c290617afb9c$import$ea155c2571caca83;
+    $1dbdbad51c9df434baf2c290617afb9c$var$assert(args.length > 0, 'At least one arg needs to be specified');
+    var msg = 'The ';
+    var len = args.length;
+    args = args.map(function(a) {
+        return "\"".concat(a, "\"");
+    });
+    switch(len){
+        case 1:
+            msg += "".concat(args[0], " argument");
+            break;
+        case 2:
+            msg += "".concat(args[0], " and ").concat(args[1], " arguments");
+            break;
+        default:
+            msg += args.slice(0, len - 1).join(', ');
+            msg += ", and ".concat(args[len - 1], " arguments");
+            break;
+    }
+    return "".concat(msg, " must be specified");
+}, TypeError);
+$1dbdbad51c9df434baf2c290617afb9c$export$dd9ccead5f5c2181 = $1dbdbad51c9df434baf2c290617afb9c$var$codes;

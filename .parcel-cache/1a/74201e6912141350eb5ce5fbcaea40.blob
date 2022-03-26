@@ -1,0 +1,24 @@
+'use strict';
+var $584f365826c61562171bd3f7090ab730$var$slice = Array.prototype.slice;
+import   "584f365826c61562171bd3f7090ab730:./isArguments";
+var $584f365826c61562171bd3f7090ab730$var$origKeys = Object.keys;
+import   "584f365826c61562171bd3f7090ab730:./implementation";
+var $584f365826c61562171bd3f7090ab730$var$keysShim = $584f365826c61562171bd3f7090ab730$var$origKeys ? function keys(o) {
+    return $584f365826c61562171bd3f7090ab730$var$origKeys(o);
+} : $584f365826c61562171bd3f7090ab730$import$88e6b8e95b0eaa25;
+var $584f365826c61562171bd3f7090ab730$var$originalKeys = Object.keys;
+$584f365826c61562171bd3f7090ab730$var$keysShim.shim = function shimObjectKeys() {
+    if (Object.keys) {
+        var keysWorksWithArguments = function() {
+            // Safari 5.0 bug
+            var args = Object.keys(arguments);
+            return args && args.length === arguments.length;
+        }(1, 2);
+        if (!keysWorksWithArguments) Object.keys = function keys1(object) {
+            if ($584f365826c61562171bd3f7090ab730$import$858f44be20d0bb9d(object)) return $584f365826c61562171bd3f7090ab730$var$originalKeys($584f365826c61562171bd3f7090ab730$var$slice.call(object));
+            return $584f365826c61562171bd3f7090ab730$var$originalKeys(object);
+        };
+    } else Object.keys = $584f365826c61562171bd3f7090ab730$var$keysShim;
+    return Object.keys || $584f365826c61562171bd3f7090ab730$var$keysShim;
+};
+$584f365826c61562171bd3f7090ab730$exports = $584f365826c61562171bd3f7090ab730$var$keysShim;

@@ -1,0 +1,30 @@
+'use strict';
+/* eslint no-invalid-this: 1 */ var $0380507843655c6aaf4a88a9b4ff2500$var$ERROR_MESSAGE = 'Function.prototype.bind called on incompatible ';
+var $0380507843655c6aaf4a88a9b4ff2500$var$slice = Array.prototype.slice;
+var $0380507843655c6aaf4a88a9b4ff2500$var$toStr = Object.prototype.toString;
+var $0380507843655c6aaf4a88a9b4ff2500$var$funcType = '[object Function]';
+$0380507843655c6aaf4a88a9b4ff2500$exports = function bind(that) {
+    var target = this;
+    if (typeof target !== 'function' || $0380507843655c6aaf4a88a9b4ff2500$var$toStr.call(target) !== $0380507843655c6aaf4a88a9b4ff2500$var$funcType) throw new TypeError($0380507843655c6aaf4a88a9b4ff2500$var$ERROR_MESSAGE + target);
+    var args = $0380507843655c6aaf4a88a9b4ff2500$var$slice.call(arguments, 1);
+    var bound;
+    var binder = function() {
+        if (this instanceof bound) {
+            var result = target.apply(this, args.concat($0380507843655c6aaf4a88a9b4ff2500$var$slice.call(arguments)));
+            if (Object(result) === result) return result;
+            return this;
+        } else return target.apply(that, args.concat($0380507843655c6aaf4a88a9b4ff2500$var$slice.call(arguments)));
+    };
+    var boundLength = Math.max(0, target.length - args.length);
+    var boundArgs = [];
+    for(var i = 0; i < boundLength; i++)boundArgs.push('$' + i);
+    bound = Function('binder', 'return function (' + boundArgs.join(',') + '){ return binder.apply(this,arguments); }')(binder);
+    if (target.prototype) {
+        var Empty = function Empty1() {
+        };
+        Empty.prototype = target.prototype;
+        bound.prototype = new Empty();
+        Empty.prototype = null;
+    }
+    return bound;
+};

@@ -1,0 +1,10 @@
+'use strict';
+import   "e62de46e4eb43b944bd4a942ca9658a7:get-intrinsic";
+var $e62de46e4eb43b944bd4a942ca9658a7$var$$gOPD = $e62de46e4eb43b944bd4a942ca9658a7$import$c9222b71efe3969d('%Object.getOwnPropertyDescriptor%');
+if ($e62de46e4eb43b944bd4a942ca9658a7$var$$gOPD) try {
+    $e62de46e4eb43b944bd4a942ca9658a7$var$$gOPD([], 'length');
+} catch (e) {
+    // IE 8 has a broken gOPD
+    $e62de46e4eb43b944bd4a942ca9658a7$var$$gOPD = null;
+}
+$e62de46e4eb43b944bd4a942ca9658a7$exports = $e62de46e4eb43b944bd4a942ca9658a7$var$$gOPD;

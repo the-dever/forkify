@@ -1,0 +1,20 @@
+'use strict';
+import   "3fd6915d24d360ea68112bd75578ffa6:../../../errors";
+var $3fd6915d24d360ea68112bd75578ffa6$var$ERR_INVALID_OPT_VALUE = $3fd6915d24d360ea68112bd75578ffa6$import$13f352e8cef7114e$dd9ccead5f5c2181.ERR_INVALID_OPT_VALUE;
+function $3fd6915d24d360ea68112bd75578ffa6$var$highWaterMarkFrom(options, isDuplex, duplexKey) {
+    return options.highWaterMark != null ? options.highWaterMark : isDuplex ? options[duplexKey] : null;
+}
+function $3fd6915d24d360ea68112bd75578ffa6$var$getHighWaterMark(state, options, duplexKey, isDuplex) {
+    var hwm = $3fd6915d24d360ea68112bd75578ffa6$var$highWaterMarkFrom(options, isDuplex, duplexKey);
+    if (hwm != null) {
+        if (!(isFinite(hwm) && Math.floor(hwm) === hwm) || hwm < 0) {
+            var name = isDuplex ? duplexKey : 'highWaterMark';
+            throw new $3fd6915d24d360ea68112bd75578ffa6$var$ERR_INVALID_OPT_VALUE(name, hwm);
+        }
+        return Math.floor(hwm);
+    } // Default value
+    return state.objectMode ? 16 : 16384;
+}
+$3fd6915d24d360ea68112bd75578ffa6$exports = {
+    getHighWaterMark: $3fd6915d24d360ea68112bd75578ffa6$var$getHighWaterMark
+};

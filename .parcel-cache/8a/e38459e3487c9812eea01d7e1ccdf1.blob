@@ -1,0 +1,10 @@
+'use strict';
+var $f9aed1b259ed2a651e31c0be82c9bab1$var$numberIsNaN = function(value) {
+    return value !== value;
+};
+$f9aed1b259ed2a651e31c0be82c9bab1$exports = function is(a, b) {
+    if (a === 0 && b === 0) return 1 / a === 1 / b;
+    if (a === b) return true;
+    if ($f9aed1b259ed2a651e31c0be82c9bab1$var$numberIsNaN(a) && $f9aed1b259ed2a651e31c0be82c9bab1$var$numberIsNaN(b)) return true;
+    return false;
+};

@@ -1,0 +1,19 @@
+'use strict';
+var $0ef95495ace2ee239c2da37758886e2e$var$possibleNames = [
+    'BigInt64Array',
+    'BigUint64Array',
+    'Float32Array',
+    'Float64Array',
+    'Int16Array',
+    'Int32Array',
+    'Int8Array',
+    'Uint16Array',
+    'Uint32Array',
+    'Uint8Array',
+    'Uint8ClampedArray'
+];
+$0ef95495ace2ee239c2da37758886e2e$exports = function availableTypedArrays() {
+    var out = [];
+    for(var i = 0; i < $0ef95495ace2ee239c2da37758886e2e$var$possibleNames.length; i++)if (typeof $parcel$global[$0ef95495ace2ee239c2da37758886e2e$var$possibleNames[i]] === 'function') out[out.length] = $0ef95495ace2ee239c2da37758886e2e$var$possibleNames[i];
+    return out;
+};

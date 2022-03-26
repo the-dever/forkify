@@ -1,0 +1,94 @@
+'use strict';
+var $8ee7845d5bca88ab0e49ddf6e55df9f8$var$keysShim;
+import   "8ee7845d5bca88ab0e49ddf6e55df9f8:./isArguments";
+if (!Object.keys) {
+    // modified from https://github.com/es-shims/es5-shim
+    var $8ee7845d5bca88ab0e49ddf6e55df9f8$var$has = Object.prototype.hasOwnProperty;
+    var $8ee7845d5bca88ab0e49ddf6e55df9f8$var$toStr = Object.prototype.toString;
+    var $8ee7845d5bca88ab0e49ddf6e55df9f8$var$isArgs = $8ee7845d5bca88ab0e49ddf6e55df9f8$import$858f44be20d0bb9d; // eslint-disable-line global-require
+    var $8ee7845d5bca88ab0e49ddf6e55df9f8$var$isEnumerable = Object.prototype.propertyIsEnumerable;
+    var $8ee7845d5bca88ab0e49ddf6e55df9f8$var$hasDontEnumBug = !$8ee7845d5bca88ab0e49ddf6e55df9f8$var$isEnumerable.call({
+        toString: null
+    }, 'toString');
+    var $8ee7845d5bca88ab0e49ddf6e55df9f8$var$hasProtoEnumBug = $8ee7845d5bca88ab0e49ddf6e55df9f8$var$isEnumerable.call(function() {
+    }, 'prototype');
+    var $8ee7845d5bca88ab0e49ddf6e55df9f8$var$dontEnums = [
+        'toString',
+        'toLocaleString',
+        'valueOf',
+        'hasOwnProperty',
+        'isPrototypeOf',
+        'propertyIsEnumerable',
+        'constructor'
+    ];
+    var $8ee7845d5bca88ab0e49ddf6e55df9f8$var$equalsConstructorPrototype = function(o) {
+        var ctor = o.constructor;
+        return ctor && ctor.prototype === o;
+    };
+    var $8ee7845d5bca88ab0e49ddf6e55df9f8$var$excludedKeys = {
+        $applicationCache: true,
+        $console: true,
+        $external: true,
+        $frame: true,
+        $frameElement: true,
+        $frames: true,
+        $innerHeight: true,
+        $innerWidth: true,
+        $onmozfullscreenchange: true,
+        $onmozfullscreenerror: true,
+        $outerHeight: true,
+        $outerWidth: true,
+        $pageXOffset: true,
+        $pageYOffset: true,
+        $parent: true,
+        $scrollLeft: true,
+        $scrollTop: true,
+        $scrollX: true,
+        $scrollY: true,
+        $self: true,
+        $webkitIndexedDB: true,
+        $webkitStorageInfo: true,
+        $window: true
+    };
+    var $8ee7845d5bca88ab0e49ddf6e55df9f8$var$hasAutomationEqualityBug = function() {
+        /* global window */ if (typeof window === 'undefined') return false;
+        for(var k in window)try {
+            if (!$8ee7845d5bca88ab0e49ddf6e55df9f8$var$excludedKeys['$' + k] && $8ee7845d5bca88ab0e49ddf6e55df9f8$var$has.call(window, k) && window[k] !== null && typeof window[k] === 'object') try {
+                $8ee7845d5bca88ab0e49ddf6e55df9f8$var$equalsConstructorPrototype(window[k]);
+            } catch (e) {
+                return true;
+            }
+        } catch (e) {
+            return true;
+        }
+        return false;
+    }();
+    var $8ee7845d5bca88ab0e49ddf6e55df9f8$var$equalsConstructorPrototypeIfNotBuggy = function(o) {
+        /* global window */ if (typeof window === 'undefined' || !$8ee7845d5bca88ab0e49ddf6e55df9f8$var$hasAutomationEqualityBug) return $8ee7845d5bca88ab0e49ddf6e55df9f8$var$equalsConstructorPrototype(o);
+        try {
+            return $8ee7845d5bca88ab0e49ddf6e55df9f8$var$equalsConstructorPrototype(o);
+        } catch (e) {
+            return false;
+        }
+    };
+    $8ee7845d5bca88ab0e49ddf6e55df9f8$var$keysShim = function keys(object) {
+        var isObject = object !== null && typeof object === 'object';
+        var isFunction = $8ee7845d5bca88ab0e49ddf6e55df9f8$var$toStr.call(object) === '[object Function]';
+        var isArguments = $8ee7845d5bca88ab0e49ddf6e55df9f8$var$isArgs(object);
+        var isString = isObject && $8ee7845d5bca88ab0e49ddf6e55df9f8$var$toStr.call(object) === '[object String]';
+        var theKeys = [];
+        if (!isObject && !isFunction && !isArguments) throw new TypeError('Object.keys called on a non-object');
+        var skipProto = $8ee7845d5bca88ab0e49ddf6e55df9f8$var$hasProtoEnumBug && isFunction;
+        if (isString && object.length > 0 && !$8ee7845d5bca88ab0e49ddf6e55df9f8$var$has.call(object, 0)) for(var i = 0; i < object.length; ++i)theKeys.push(String(i));
+        if (isArguments && object.length > 0) for(var j = 0; j < object.length; ++j)theKeys.push(String(j));
+        else {
+            for(var name in object)if (!(skipProto && name === 'prototype') && $8ee7845d5bca88ab0e49ddf6e55df9f8$var$has.call(object, name)) theKeys.push(String(name));
+        }
+        if ($8ee7845d5bca88ab0e49ddf6e55df9f8$var$hasDontEnumBug) {
+            var skipConstructor = $8ee7845d5bca88ab0e49ddf6e55df9f8$var$equalsConstructorPrototypeIfNotBuggy(object);
+            for(var k = 0; k < $8ee7845d5bca88ab0e49ddf6e55df9f8$var$dontEnums.length; ++k)if (!(skipConstructor && $8ee7845d5bca88ab0e49ddf6e55df9f8$var$dontEnums[k] === 'constructor') && $8ee7845d5bca88ab0e49ddf6e55df9f8$var$has.call(object, $8ee7845d5bca88ab0e49ddf6e55df9f8$var$dontEnums[k])) theKeys.push($8ee7845d5bca88ab0e49ddf6e55df9f8$var$dontEnums[k]);
+        }
+        return theKeys;
+    };
+}
+$8ee7845d5bca88ab0e49ddf6e55df9f8$exports = $8ee7845d5bca88ab0e49ddf6e55df9f8$var$keysShim;
